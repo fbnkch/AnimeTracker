@@ -1,5 +1,23 @@
-# Welcome to this Anime-Tracker project!
-## This Anime-Tracker is build by Fabian Koch
-### This project is a simple tracker, that lets you mark anime as watched, favorise them, search for different anime and more.
-### In general this project revolves around the Jikan API, which lets you access information about basically any anime you can think of.
-    
+# AnimeTracker
+
+## Overview
+"AnimeTracker" is a web application built to help anime enthusiasts manage their watching experience. This project uses the Jikan API to access information about basically any anime and allows users to track their watching progress.
+
+## Developer
+Developed by Fabian Koch as part of the "Webtechnologien" course at HTW Berlin.
+
+## Features (note: these might be adjusted depending on how the developement is going)
+- **Track Watching Progress**: Mark anime as "watching", "watchlist", or "finished"
+- **Favorites System**: Flag your favorite anime for quick access
+- **Search Functionality**: Find anime by title using Jikan API integration
+- **Notes**: Add personal notes to any anime in your collection
+
+## Tech-Stack
+- Backend: Java with Spring Boot
+- Frontend: Vue.Js
+- API: Jikan API (for anime data)
+- Database: JPA/Hibernate, H2
+- Project Management: Gradle
+
+## Current Status
+Milestone 1: Basic REST API with dummy data to demonstrate core functionality
