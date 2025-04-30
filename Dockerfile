@@ -1,18 +1,16 @@
-# Build stage
-FROM gradle:jdk21-jammy AS build
-WORKDIR /home/gradle/src
-COPY build.gradle settings.gradle ./
-COPY gradle ./gradle
-# Download dependencies first (better caching)
-RUN gradle dependencies --no-daemon
 
-# Then copy source code and build
-COPY src ./src
-RUN gradle build --no-daemon --info
-
-# Run stage
-FROM eclipse-temurin:21-jdk-jammy
+FROM gradle:7.6-jdk17 AS builder
 WORKDIR /app
-COPY --from=build /home/gradle/src/build/libs/*.jar app.jar
+COPY . .
+RUN gradle build --no-daemon
+
+
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY --from=builder /app/build/libs/*.jar app.jar
+
+
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+
+# Starte die Anwendung
+ENTRYPOINT ["java", "-jar", "app.jar"]
