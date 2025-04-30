@@ -1,8 +1,14 @@
 # Build stage
 FROM gradle:jdk21-jammy AS build
-COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
-RUN gradle build --no-daemon
+COPY build.gradle settings.gradle ./
+COPY gradle ./gradle
+# Download dependencies first (better caching)
+RUN gradle dependencies --no-daemon
+
+# Then copy source code and build
+COPY src ./src
+RUN gradle build --no-daemon --info
 
 # Run stage
 FROM eclipse-temurin:21-jdk-jammy
