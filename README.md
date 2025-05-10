@@ -7,7 +7,7 @@
 Developed by Fabian Koch as part of the "Webtechnologien" course at HTW Berlin.
 
 ## Features (note: these might be adjusted depending on how the developement is going)
-- **Track Watching Progress**: Mark anime as "watching", "watchlist", or "finished"
+- **Track Watching Progress**
 - **Favorites System**: Flag your favorite anime for quick access
 - **Search Functionality**: Find anime by title using Jikan API integration
 - **Notes**: Add personal notes to any anime in your collection
@@ -16,8 +16,5 @@ Developed by Fabian Koch as part of the "Webtechnologien" course at HTW Berlin.
 - Backend: Java with Spring Boot
 - Frontend: Vue.Js
 - API: Jikan API (for anime data)
-- Database: JPA/Hibernate, H2
+- Database: JPA/Hibernate, PostgreSQL/H2
 - Project Management: Gradle
-
-## Current Status
-Milestone 1: Basic REST API with dummy data to demonstrate core functionality
