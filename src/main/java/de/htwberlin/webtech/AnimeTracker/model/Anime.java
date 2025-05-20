@@ -17,17 +17,21 @@ public class Anime {
     @Id
     @GeneratedValue
     private Long id;
+
     private String title;
     private String imageUrl;
-    private String status; //watchlist, watching, fertig
-    private boolean favorite;
-    private String note; //notiz zu jedem anime
+    private Integer totalEpisodes;
+    private Integer watchedEpisodes;
 
-    public Anime(String title, String imageUrl, String status, boolean favorite, String note) {
+    private String userId;
+
+    // Konstruktor für die Verwendung im Controller
+    public Anime(String title, String imageUrl, Integer totalEpisodes, Integer watchedEpisodes, String userId) {
         this.title = title;
         this.imageUrl = imageUrl;
-        this.status = status;
-        this.favorite = favorite;
-        this.note = note;
+        this.totalEpisodes = totalEpisodes;
+        this.watchedEpisodes = watchedEpisodes;
+        this.userId = userId;
     }
+
 }
