@@ -15,8 +15,9 @@ public class WebConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins("https://anime-tracker-frontend.onrender.com",
-                                        "http://localhost:3000/") // FRONTEND-URL
+                                        "http://localhost:3000") // FRONTEND-URL
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowCredentials(true)
                         .allowedHeaders("*");
             }
         };
