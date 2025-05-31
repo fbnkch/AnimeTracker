@@ -10,7 +10,7 @@ Developed by Fabian Koch as part of the "Webtechnologien" course at HTW Berlin.
 - **Track Watching Progress**
 - **Favorites System**: Flag your favorite anime for quick access
 - **Search Functionality**: Find anime by title using Jikan API integration
-- **Notes**: Add personal notes to any anime in your collection
+
 
 ## Tech-Stack
 - Backend: Java with Spring Boot
