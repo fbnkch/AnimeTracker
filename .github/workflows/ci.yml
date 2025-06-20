@@ -16,5 +16,7 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
+      - name: Ensure gradlew is executable
+        run: chmod +x ./gradlew
       - name: Build & Test
         run: ./gradlew test
