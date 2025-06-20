@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -23,10 +24,10 @@ public class Anime {
     private Integer totalEpisodes;
     private Integer watchedEpisodes;
 
-    private String userId;
+    private UUID userId;
 
     // Konstruktor für die Verwendung im Controller
-    public Anime(String title, String imageUrl, Integer totalEpisodes, Integer watchedEpisodes, String userId) {
+    public Anime(String title, String imageUrl, Integer totalEpisodes, Integer watchedEpisodes, UUID userId) {
         this.title = title;
         this.imageUrl = imageUrl;
         this.totalEpisodes = totalEpisodes;

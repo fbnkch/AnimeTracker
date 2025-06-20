@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/animes")
@@ -42,13 +43,13 @@ public class AnimeController {
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Anime>> getUserAnimes(@PathVariable String userId) {
+    public ResponseEntity<List<Anime>> getUserAnimes(@PathVariable UUID userId) {
         List<Anime> userAnimes = animeRepository.findByUserId(userId);
         return ResponseEntity.ok(userAnimes);
     }
 
     @PostMapping("/user/{userId}")
-    public ResponseEntity<Anime> saveUserAnime(@PathVariable String userId, @RequestBody FrontendAnime frontendAnime) {
+    public ResponseEntity<Anime> saveUserAnime(@PathVariable UUID userId, @RequestBody FrontendAnime frontendAnime) {
         try {
             System.out.println("Received anime from frontend: " + frontendAnime);
 
@@ -82,7 +83,7 @@ public class AnimeController {
     // NEUER ENDPUNKT: Update der watched_episodes
     @PutMapping("/user/{userId}/anime/{animeId}")
     public ResponseEntity<Anime> updateAnimeEpisodes(
-            @PathVariable String userId,
+            @PathVariable UUID userId,
             @PathVariable Long animeId,
             @RequestBody FrontendAnime frontendAnime) {
 
@@ -120,7 +121,7 @@ public class AnimeController {
     // NEUER ENDPUNKT: Löschen eines Anime
     @DeleteMapping("/user/{userId}/anime/{animeId}")
     public ResponseEntity<Void> deleteAnime(
-            @PathVariable String userId,
+            @PathVariable UUID userId,
             @PathVariable Long animeId) {
 
         try {
