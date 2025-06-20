@@ -21,13 +21,23 @@ class AnimeTrackerApplicationTests {
 
 	@Test
 	void userApi_isReachable() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/api/animes", String.class);
+		// Basic Auth Credentials für TestRestTemplate
+		HttpHeaders headers = new HttpHeaders();
+		headers.setBasicAuth("demo", "demo123");
+		HttpEntity<String> entity = new HttpEntity<>(headers);
+
+		ResponseEntity<String> response = restTemplate.exchange("/api/animes", HttpMethod.GET, entity, String.class);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
 
 	@Test
 	void landingPage_isReachable() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/", String.class);
+		// Basic Auth für die Startseite
+		HttpHeaders headers = new HttpHeaders();
+		headers.setBasicAuth("demo", "demo123");
+		HttpEntity<String> entity = new HttpEntity<>(headers);
+
+		ResponseEntity<String> response = restTemplate.exchange("/", HttpMethod.GET, entity, String.class);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
 }
