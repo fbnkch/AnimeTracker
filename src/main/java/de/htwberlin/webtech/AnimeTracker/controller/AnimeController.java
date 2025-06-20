@@ -1,7 +1,7 @@
 package de.htwberlin.webtech.AnimeTracker.controller;
 
 import de.htwberlin.webtech.AnimeTracker.model.Anime;
-import de.htwberlin.webtech.AnimeTracker.repository.AnimeRepository;
+import de.htwberlin.webtech.AnimeTracker.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +22,9 @@ public class AnimeController {
     public AnimeController(AnimeRepository animeRepository) {
         this.animeRepository = animeRepository;
     }
+
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping
     public ResponseEntity<List<Anime>> getAnimes() {
@@ -44,6 +47,9 @@ public class AnimeController {
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Anime>> getUserAnimes(@PathVariable UUID userId) {
+        if (!userRepository.existsById(userId)) {
+            return ResponseEntity.notFound().build();
+        }
         List<Anime> userAnimes = animeRepository.findByUserId(userId);
         return ResponseEntity.ok(userAnimes);
     }

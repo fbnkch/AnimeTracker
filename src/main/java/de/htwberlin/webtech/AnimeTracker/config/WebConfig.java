@@ -18,7 +18,7 @@ public class WebConfig {
                                         "http://localhost:3000") // FRONTEND-URL
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowCredentials(true)
-                        .allowedHeaders("*");
+                        .allowedHeaders("Authorization", "Content-Type", "Accept");
             }
         };
     }
